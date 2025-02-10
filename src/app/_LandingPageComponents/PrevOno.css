@@ -1,0 +1,304 @@
+.prev-ono-container {
+  position: relative;
+  padding-bottom: 3em;
+}
+
+.prev-ono-container::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border: double 2px transparent;
+  border-radius: 30px;
+  background-image: linear-gradient(#0a0a0a, #0a0a0a),
+    linear-gradient(to bottom, #895ec2 0%, transparent 30%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  z-index: -1;
+}
+
+.prev-ono-container::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 4px);
+  top: 2px;
+  margin-left: 2px;
+  border-radius: 30px;
+  background-image: radial-gradient(
+    circle closest-corner at 50% 0,
+    rgba(255, 105, 180, 0.2) -50%,
+    transparent
+  );
+}
+
+.prev-ono-bg-texture {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" /></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" /></svg>');
+  background-size: 200px;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.prev-ono-card-title {
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.8);
+}
+
+.prev-ono-section-title {
+  margin: 2em 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: -2px 2px 5px rgba(255, 255, 255, 0.35);
+}
+
+.prev-ono-artist-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev-ono-artist-img-small,
+.prev-ono-artist-img-large {
+  position: relative;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: -10px 10px 20px rgba(255, 255, 255, 0.08);
+}
+
+.prev-ono-artist-img-small {
+  height: 10em;
+  width: 15em;
+}
+
+.prev-ono-artist-img-large {
+  height: 15em;
+  width: 20em;
+}
+
+.prev-ono-artist-name {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  font-size: 1.15em;
+  font-weight: bold;
+  white-space: nowrap;
+  text-shadow: -2px 2px 5px rgba(0, 0, 0, 1);
+}
+
+.prev-ono-major-events-container {
+  width: 50vw;
+  margin-bottom: -2em;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: 1em;
+}
+
+.prev-ono-major-text {
+  font-size: 0.8em;
+}
+
+.prev-ono-major-img-1 {
+  grid-column: 4 / 4 span;
+  grid-row: 1 / 4 span;
+  border: 1px solid rgb(255, 144, 144);
+  box-shadow: -2px 2px 10px rgba(255, 144, 144, 0.15);
+}
+
+.prev-ono-major-text-1 {
+  grid-column: 8 / 2 span;
+  grid-row: 1 / 2 span;
+  color: rgba(255, 144, 144, 0.8);
+}
+
+.prev-ono-major-img-2 {
+  grid-column: 8 / 2 span;
+  grid-row: 3 / 3 span;
+  border: 1px solid rgb(170, 255, 170);
+  box-shadow: -2px 2px 10px rgba(170, 255, 170, 0.15);
+}
+
+.prev-ono-major-text-2 {
+  grid-column: 8 / 3 span;
+  grid-row: 6 / 2 span;
+  color: rgba(170, 255, 170, 0.8);
+}
+
+.prev-ono-major-img-3 {
+  grid-column: 5 / 3 span;
+  grid-row: 5 / 3 span;
+  border: 1px solid rgb(162, 162, 255);
+  box-shadow: -2px 2px 10px rgba(162, 162, 255, 0.15);
+}
+
+.prev-ono-major-text-3 {
+  grid-column: 2 / 3 span;
+  grid-row: 5 / 2 span;
+  color: rgba(162, 162, 255, 0.8);
+  text-align: right;
+}
+
+.prev-ono-major-img-4 {
+  grid-column: 2 / 2 span;
+  grid-row: 3 / 2 span;
+  border: 1px solid rgb(255, 255, 180);
+  box-shadow: -2px 2px 10px rgba(255, 255, 180, 0.15);
+}
+
+.prev-ono-major-text-4 {
+  grid-column: 1 / 3 span;
+  grid-row: 1 / 2 span;
+  color: rgba(255, 255, 180, 0.8);
+  text-align: right;
+  display: flex;
+  align-items: flex-end;
+}
+
+.prev-ono-minor-img {
+  height: 6.5em;
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: -2px 2px 10px rgba(255, 255, 255, 0.15);
+}
+
+.prev-ono-minor-img-2 {
+  transform: rotate(-20deg);
+}
+
+.prev-ono-minor-img-3 {
+  transform: rotate(25deg);
+}
+
+.prev-ono-minor-img-4 {
+  transform: rotate(15deg);
+}
+
+.prev-ono-promo-img {
+  height: 25vw;
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+@media screen and (max-width: 940px) {
+  .prev-ono-major-events-container {
+    width: 60vw;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .prev-ono-artist-container {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .prev-ono-artist-container {
+    font-size: 0.8em;
+  }
+
+  .prev-ono-major-events-container {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .prev-ono-artist-container {
+    font-size: 0.7em;
+  }
+
+  .prev-ono-major-events-container {
+    padding: 5em 0;
+    height: 50vw;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .prev-ono-major-events-container {
+    height: 80vw;
+    width: 80vw;
+    margin: -6em 0;
+  }
+
+  .prev-ono-minor-img {
+    height: 5.5em;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .prev-ono-artist-container {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .prev-ono-artist-container {
+    flex-direction: column;
+  }
+
+  .prev-ono-artist-1 {
+    transform: translateX(-10em);
+  }
+
+  .prev-ono-artist-2 {
+    transform: translateX(10em);
+  }
+
+  .prev-ono-minor-container {
+    grid-template-columns: initial;
+    gap: 2em;
+  }
+
+  .prev-ono-promo-container {
+    grid-template-columns: initial;
+    gap: 2em;
+  }
+
+  .prev-ono-promo-container > div:nth-child(1) {
+    order: 2;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .prev-ono-major-events-container {
+    height: 90vw;
+    width: 85vw;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .prev-ono-major-events-container {
+    height: 95vw;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .prev-ono-major-events-container {
+    height: 120vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .prev-ono-artist-1 {
+    transform: translateX(-5em);
+  }
+
+  .prev-ono-artist-2 {
+    transform: translateX(5em);
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .prev-ono-major-events-container {
+    height: 130vw;
+  }
+}

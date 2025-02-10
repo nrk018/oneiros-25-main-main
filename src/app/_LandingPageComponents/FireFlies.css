@@ -1,0 +1,21 @@
+.fire-flies-parent {
+  position: absolute;
+  height: calc(150% + 20px);
+  width: calc(150% + 40px);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1;
+}
+
+.fire-fly-particle {
+  position: absolute;
+  height: var(--particle-size);
+  width: var(--particle-size);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 100px;
+  box-shadow: 0 0 var(--particle-size) #fff;
+  opacity: 0;
+  transition: top var(--particle-speed), left var(--particle-speed), opacity 0.3s;
+  will-change: top, left, opacity;
+}

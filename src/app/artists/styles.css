@@ -1,0 +1,100 @@
+.reveal-container {
+    position: relative;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 30;
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.curtain::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+    pointer-events: none;
+}
+
+.curtain-left {
+    left: 0;
+    transform-origin: left;
+}
+
+.curtain-right {
+    right: 0;
+    transform-origin: right;
+}
+
+.mystery-text {
+    color: #fff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.text-container {
+    will-change: transform, opacity;
+}
+
+@media (max-width: 639px) {
+    .reveal-container {
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+    }
+
+    .mystery-text {
+        text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+    }
+}
+
+/* Enhance scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Disable hover effects on mobile devices */
+@media (hover: none) {
+    .hover\:bg-white\/20:hover {
+        background-color: inherit;
+    }
+
+    .hover\:bg-\[\#1ED760\]:hover {
+        background-color: #1db954;
+    }
+
+    .hover\:shadow-lg:hover {
+        box-shadow: none;
+    }
+}
+
+/* Ensure proper sizing on iOS devices */
+@supports (-webkit-touch-callout: none) {
+    .reveal-container {
+        height: -webkit-fill-available;
+    }
+}

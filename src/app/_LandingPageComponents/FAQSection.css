@@ -1,0 +1,9 @@
+.faq-section {
+  min-width: 50vw;
+}
+
+@media screen and (max-width: 570px) {
+  .faq-section {
+    min-width: 80vw;
+  }
+}

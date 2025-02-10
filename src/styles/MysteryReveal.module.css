@@ -1,0 +1,59 @@
+.revealContainer {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.curtain {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 30;
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.curtain::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+    pointer-events: none;
+}
+
+.curtain-left {
+    left: 0;
+    transform-origin: left;
+}
+
+.curtain-right {
+    right: 0;
+    transform-origin: right;
+}
+
+.mystery-text {
+    color: #fff;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.text-container {
+    will-change: transform, opacity;
+}
+
+@media (max-width: 639px) {
+    .revealContainer {
+        height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+
+    .mystery-text {
+        text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+    }
+}

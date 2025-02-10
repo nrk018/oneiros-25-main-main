@@ -1,0 +1,7 @@
+font-face {
+    font-family: 'NeonFont';
+    src: url('/fonts/neon-font.ttf') format('truetype'),
+         url('/fonts/neon-font.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }

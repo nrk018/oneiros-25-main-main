@@ -88,7 +88,10 @@ const config: Config = {
   			mono: [
   				'Space Mono',
   				'monospace'
-  			]
+  			],
+			  'neon': 
+			  ['NeonFont', 
+			 'sans-serif'],
   		},
   		keyframes: {
   			'accordion-down': {

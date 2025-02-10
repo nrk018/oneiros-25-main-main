@@ -25,8 +25,8 @@ const Header = () => {
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <span className="text-xl sm:text-2xl md:text-3xl font-bold">
-              <span className="text-[#00ff9d]">Oneiros</span>{" "}
-              <span className="text-[#a855f7]">2025</span>
+                <span className="text-white font: NeonFont">Oneiros</span>{" "}
+                <span className="text-[#c3c4fa] font: NeonFont">2025</span>
             </span>
           </Link>
 
@@ -37,12 +37,12 @@ const Header = () => {
                 key={link.href}
                 href={link.href}
                 className={`relative group ${
-                  pathname === link.href ? "text-[#00ff9d]" : "text-white"
+                  pathname === link.href ? "text-white" : "text-white"
                 }`}
               >
-                <span className="relative text-base lg:text-lg transition-colors duration-200 hover:text-[#00ff9d]">
+                <span className="relative text-base lg:text-lg transition-colors duration-200 hover:text-white">
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#00ff9d] to-[#a855f7] group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-white to-[#a855f7] group-hover:w-full transition-all duration-300" />
                 </span>
               </Link>
             ))}
@@ -50,7 +50,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden text-[#00ff9d] hover:text-[#a855f7] transition-colors p-2"
+            className="md:hidden text-white hover:text-[#a855f7] transition-colors p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
           >
@@ -105,8 +105,8 @@ const Header = () => {
                       href={link.href}
                       className={`text-lg ${
                         pathname === link.href
-                          ? "text-[#00ff9d]"
-                          : "text-white hover:text-[#00ff9d]"
+                          ? "text-white"
+                          : "text-white hover:text-white"
                       } transition-colors`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >

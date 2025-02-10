@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
@@ -758,17 +758,9 @@ function MemberCard({ member }: { member: TeamMember }) {
 export default function TeamsPage() {
   const [selection, setSelection] = useState<Selection>({ type: "conveners" });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const gradientTextClass = "bg-gradient-to-r from-purple-100 via-indigo-500 to-purple-500 text-transparent bg-clip-text animate-gradient [text-shadow:0_0_5px_rgba(255,0,128,0.3),0_0_10px_rgba(255,0,128,0.2),0_0_15px_rgba(255,0,128,0.1)]";
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      setIsScrolled(offset > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
 
   const handleSelection = (newSelection: Selection) => {
     setSelection(newSelection);

@@ -13,8 +13,8 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black text-white w-full overflow-hidden font-montserrat">
-      <div className="absolute inset-0 z-0">
+    <footer className="relative bg-black text-white w-full font-montserrat">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-purple-900/20" />
         <motion.div
           className="absolute w-[800px] h-[800px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -33,10 +33,10 @@ const Footer = () => {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Logo and Tagline */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <h2 className="font-gloock text-4xl md:text-5xl font-bold leading-tight mb-4">
+            <h2 className="font-gloock text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
                 Glow Beyond Limits
               </span>
@@ -76,10 +76,12 @@ const Footer = () => {
                     aria-label={link.ariaLabel}
                   >
                     <link.icon
-                      className="text-purple-400 group-hover:scale-110 transition-transform duration-300"
+                      className="text-purple-400 group-hover:scale-110 transition-transform duration-300 flex-shrink-0"
                       size={18}
                     />
-                    <span className="font-instrument-sans">{link.text}</span>
+                    <span className="font-instrument-sans break-all">
+                      {link.text}
+                    </span>
                   </Link>
                 </li>
               ))}
@@ -114,7 +116,7 @@ const Footer = () => {
                 <span className="font-instrument-sans">
                   View on Google Maps
                 </span>
-                <ExternalLink size={14} />
+                <ExternalLink size={14} className="flex-shrink-0" />
               </Link>
             </address>
           </div>
@@ -140,7 +142,7 @@ const Footer = () => {
                 }}
               >
                 <Heart
-                  className="text-red-500 filter drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"
+                  className="text-red-500 filter drop-shadow-[0_0_8px_rgba(239,68,68,0.5)] flex-shrink-0"
                   size={14}
                 />
               </motion.span>

@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import MysteryReveal from "../../components/MysteryReveal";
 import PreviousArtistCard from "../../components/PreviousArtistCard";
-import ScrollPrompt from "../../components/ScrollPrompt";
 import ParallaxBackground from "../../components/ParallaxBackground";
 import "./styles.css";
 
@@ -111,17 +110,23 @@ const ArtistsPage: React.FC = () => {
         exit="out"
         variants={pageVariants}
         transition={pageTransition}
+        className="relative"
       >
-        <ParallaxBackground image={currentArtist.image} />
-        <div className="relative bg-black min-h-screen text-white overflow-hidden">
-          <div className="relative h-screen flex flex-col">
+        {/* Background layer - lowest z-index */}
+        <div className="fixed inset-0 z-0">
+          <ParallaxBackground image={currentArtist.image} />
+        </div>
+
+        {/* Content layer - middle z-index */}
+        <div className="relative z-10 min-h-screen text-white">
+          {/* Hero Section */}
+          <div className="relative h-screen">
             <MysteryReveal currentArtist={currentArtist} />
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50">
-              <ScrollPrompt />
-            </div>
           </div>
+
+          {/* Previous Artists Section */}
           <motion.div
-            className="container mx-auto px-4 py-12 sm:py-16 space-y-12 sm:space-y-16 md:space-y-24 relative z-50"
+            className="container mx-auto px-4 py-12 sm:py-16 space-y-12 sm:space-y-16 md:space-y-24"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}

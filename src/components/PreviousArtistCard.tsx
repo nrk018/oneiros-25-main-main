@@ -29,7 +29,7 @@ const PreviousArtistCard: React.FC<ArtistCardProps> = ({ artist, index }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.2 }}
-      className="group relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 max-w-4xl mx-auto"
+      className="relative group overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 max-w-4xl mx-auto"
     >
       {/* Main Image */}
       <div className="relative aspect-[16/9] sm:aspect-[2/1] md:aspect-[16/9]">

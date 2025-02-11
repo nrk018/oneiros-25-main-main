@@ -1,11 +1,12 @@
 "use client";
 
 import type React from "react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { Music } from "lucide-react";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import ParticleSystem from "./ParticleSystem";
 import "../styles/MysteryReveal.css";
 
@@ -21,19 +22,20 @@ interface MysteryRevealProps {
 }
 
 const MysteryReveal: React.FC<MysteryRevealProps> = ({ currentArtist }) => {
-  const [isRevealed, setIsRevealed] = useState(false);
+  // const [isRevealed, setIsRevealed] = useState(false);
+  const [isRevealed] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const curtainLeftRef = useRef<HTMLDivElement>(null);
   const curtainRightRef = useRef<HTMLDivElement>(null);
   const inView = useInView(containerRef, { once: true });
 
-  const handleReveal = () => {
-    setIsRevealed(true);
-    if (curtainLeftRef.current && curtainRightRef.current) {
-      curtainLeftRef.current.style.transform = "scaleX(0)";
-      curtainRightRef.current.style.transform = "scaleX(0)";
-    }
-  };
+  // const handleReveal = () => {
+  //   setIsRevealed(true);
+  //   if (curtainLeftRef.current && curtainRightRef.current) {
+  //     curtainLeftRef.current.style.transform = "scaleX(0)";
+  //     curtainRightRef.current.style.transform = "scaleX(0)";
+  //   }
+  // };
 
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -48,18 +50,18 @@ const MysteryReveal: React.FC<MysteryRevealProps> = ({ currentArtist }) => {
     }),
   };
 
-  const buttonVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delay: 0.6,
-        duration: 0.5,
-        ease: [0.6, -0.05, 0.01, 0.99],
-      },
-    },
-  };
+  // const buttonVariants = {
+  //   hidden: { opacity: 0, scale: 0.8 },
+  //   visible: {
+  //     opacity: 1,
+  //     scale: 1,
+  //     transition: {
+  //       delay: 0.6,
+  //       duration: 0.5,
+  //       ease: [0.6, -0.05, 0.01, 0.99],
+  //     },
+  //   },
+  // };
 
   return (
     <div ref={containerRef} className="reveal-container">
@@ -109,7 +111,14 @@ const MysteryReveal: React.FC<MysteryRevealProps> = ({ currentArtist }) => {
               >
                 Get ready for the biggest reveal in Oneiros history
               </motion.p>
-              <motion.div variants={buttonVariants}>
+              <motion.p
+                variants={textVariants}
+                custom={1}
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mt-4 sm:mt-6"
+              >
+                Scroll Down to see the Previous Headliners
+              </motion.p>
+              {/* <motion.div variants={buttonVariants}>
                 <Button
                   onClick={handleReveal}
                   className="mt-8 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20 text-sm sm:text-base"
@@ -117,7 +126,7 @@ const MysteryReveal: React.FC<MysteryRevealProps> = ({ currentArtist }) => {
                 >
                   Reveal Artist
                 </Button>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           </div>
         ) : (

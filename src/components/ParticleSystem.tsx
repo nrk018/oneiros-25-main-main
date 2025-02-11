@@ -27,19 +27,19 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ isRevealed }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const particleCount = 300;
+    const particleCount = 200; // Reduced particle count for better performance
     const particles: Particle[] = [];
 
-    const colors = ["#ffffff", "#eeeeee", "#cccccc", "#ffffff"];
+    const colors = ["#ffffff", "#eeeeee", "#cccccc", "#dddddd"];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5, // Reduced size range from 2-6 to 0.5-2.5
-        speedX: (Math.random() - 0.5) * 0.4, // Reduced speed for smoother movement
-        speedY: (Math.random() - 0.5) * 0.4,
-        opacity: Math.random() * 0.5 + 0.1, // Reduced opacity range for subtler effect
+        size: Math.random() * 1.5 + 0.5, // Adjusted size range
+        speedX: (Math.random() - 0.5) * 0.3, // Slightly reduced speed
+        speedY: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.4 + 0.1, // Adjusted opacity range
         color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
@@ -58,29 +58,18 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ isRevealed }) => {
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
 
-      const gradient = ctx.createRadialGradient(
-        particle.x,
-        particle.y,
-        0,
-        particle.x,
-        particle.y,
-        particle.size * 1.5 // Reduced glow radius
-      );
-      gradient.addColorStop(0, `rgba(255, 255, 255, ${particle.opacity})`);
-      gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-      ctx.fillStyle = gradient;
+      ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
       ctx.fill();
 
-      // Interactive behavior: particles are attracted to the mouse position
+      // Interactive behavior: particles are gently attracted to the mouse position
       const dx = mousePositionRef.current.x - particle.x;
       const dy = mousePositionRef.current.y - particle.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      if (distance < 50) {
-        // Reduced interaction radius
-        particle.x += dx * 0.01; // Reduced attraction strength
-        particle.y += dy * 0.01;
+      if (distance < 100) {
+        // Increased interaction radius
+        particle.x += dx * 0.005; // Reduced attraction strength for smoother movement
+        particle.y += dy * 0.005;
       } else {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
@@ -94,8 +83,8 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ isRevealed }) => {
 
       // Animate opacity
       if (isRevealed) {
-        particle.opacity += (Math.random() - 0.5) * 0.02; // Reduced opacity change
-        particle.opacity = Math.max(0.1, Math.min(0.6, particle.opacity)); // Adjusted opacity range
+        particle.opacity += (Math.random() - 0.5) * 0.01; // Reduced opacity change for subtler effect
+        particle.opacity = Math.max(0.1, Math.min(0.5, particle.opacity)); // Adjusted opacity range
       }
     });
 
@@ -107,17 +96,9 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ isRevealed }) => {
     if (!canvas) return;
 
     const resizeCanvas = () => {
-      const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
-
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        ctx.scale(dpr, dpr);
-      }
-
+      canvas.width = rect.width;
+      canvas.height = rect.height;
       createParticles();
     };
 
@@ -148,8 +129,8 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({ isRevealed }) => {
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
       style={{
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         zIndex: 15,
       }}
     />

@@ -103,7 +103,7 @@ const SponsorsSection: React.FC = () => {
           very cool
         </span>{" "}
         <br className="sm:hidden" />
-        <span className="font-gloock">sponsors</span>
+        <span className="font-gloock font-thin">sponsors</span>
       </h1>
 
       <div className="relative w-[380px] h-[380px] flex items-center justify-center mt-16">

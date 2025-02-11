@@ -50,7 +50,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/GajendraVerma.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/6.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -93,7 +93,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="https://jaipur.manipal.edu/img/dsw/event/12.jpeg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/4.jpg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",

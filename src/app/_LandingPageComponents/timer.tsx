@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import {
   Gloock,
   Instrument_Sans,
@@ -9,7 +8,6 @@ import {
   Inclusive_Sans,
 } from "next/font/google";
 
-// Configure fonts
 const gloock = Gloock({
   subsets: ["latin"],
   weight: "400",
@@ -43,7 +41,7 @@ export default function Timer() {
   });
 
   useEffect(() => {
-    const targetDate = new Date("2025-02-20T00:00:00").getTime(); // Set your target date here
+    const targetDate = new Date("2025-02-20T00:00:00").getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -71,122 +69,112 @@ export default function Timer() {
 
   return (
     <main
-      className={`min-h-screen bg-[#0a0a0a] text-white p-4 md:p-8 ${instrumentSans.className} relative overflow-hidden`}
+      className={`min-h-screen bg-[#0a0a0a] text-white ${instrumentSans.className}`}
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 w-full z-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/tree.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      {/* Semi-Transparent Overlay */}
-      <div
-        className="absolute inset-0 w-full h-full bg-black/50 z-10"
-        aria-hidden="true"
-      />
-
-      {/* Countdown Timer */}
-      <div className="max-w-4xl mt-80 mx-auto mb-16 p-6 bg-black/20 rounded-3xl backdrop-blur-sm relative z-30">
-        <div className="grid grid-cols-4 gap-4 text-center">
-          <div className="flex flex-col">
-            <span
-              className={`text-6xl md:text-7xl font-bold text-purple-400 ${inclusiveSans.className}`}
-            >
-              {timeLeft.days}
-            </span>
-            <span className="text-gray-400 text-sm md:text-base">Days</span>
-          </div>
-          <div className="flex flex-col">
-            <span
-              className={`text-6xl md:text-7xl font-bold bg-gradient-to-r from-red-400 to-pink-300 bg-clip-text text-transparent ${inclusiveSans.className}`}
-            >
-              {timeLeft.hours.toString().padStart(2, "0")}
-            </span>
-            <span className="text-gray-400 text-sm md:text-base">Hours</span>
-          </div>
-          <div className="flex flex-col">
-            <span
-              className={`text-6xl md:text-7xl font-bold bg-gradient-to-r from-pink-400 to-orange-300 bg-clip-text text-transparent ${inclusiveSans.className}`}
-            >
-              {timeLeft.minutes.toString().padStart(2, "0")}
-            </span>
-            <span className="text-gray-400 text-sm md:text-base">Minutes</span>
-          </div>
-          <div className="flex flex-col">
-            <span
-              className={`text-6xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent ${inclusiveSans.className}`}
-            >
-              {timeLeft.seconds.toString().padStart(2, "0")}
-            </span>
-            <span className="text-gray-400 text-sm md:text-base">Seconds</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Content Section */}
-      <div className="max-w-4xl mx-auto space-y-6 relative z-30">
-        <h1
-          className={`text-5xl md:text-6xl ${gloock.className} tracking-[-0.64px]`}
-        >
-          About{" "}
-          <span
-            className={`font-black text-6xl ${montserrat.className} text-center tracking-[-4.48px]`}
-            style={{
-              textShadow: "0px 4px 25.3px #cacaca66",
-              background:
-                "linear-gradient(180deg, rgb(255, 184.88, 239.81) 0%, rgb(99.42, 52.33, 209.31) 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-            }}
+      {/* Combined Tree Video and Timer Section */}
+      <section className="relative">
+        {/* Tree Video */}
+        <div className="w-full h-[50vh] md:h-[70vh]">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
           >
-            Oneiros
-          </span>
-        </h1>
-
-        <p className="text-lg leading-relaxed text-gray-200">
-          Lorem ipsum dolor sit amet. Sit libero dolores qui tenetur placeat ad
-          voluptates explicabo et expedita praesentium ab voluptatem amet! Vel
-          quisquam laboriosam ex consequatur veniam sit omnis adipisci est iste
-          repellat aut nesciunt fuga et amet pariatur in quia modi. Eos magnam
-          illo nam laudantium explicabo ex fugiat quia et aliquid voluptates.
-          Aut quibusdam cupiditate quo ipsa repudiandae nam quia vero et ratione
-          dicta id quia molestiae?Et sequi voluptas ab deserunt necessitatibus
-          33 internos.
-        </p>
-
-        {/* Pointer SVG with Levitating Breathing Effect */}
-        <div className="ml-0">
-          <Image
-            src="/pointer.svg"
-            width={100}
-            height={100}
-            className="animate-levitate"
-            alt="Pointer"
-          />
+            <source src="/tree.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
-        <p className="text-lg leading-relaxed text-gray-200">
-          At deserunt ipsa est eligendi modi et tempora reprehenderit 33 neque
-          quod. Ut perferendis sint et natus provident ut nostrum esse et nobis
-          natus. Ea ducimus reiciendis aut reiciendis harum et iusto enim et
-          explicabo pariatur vel atque adipisci.
-        </p>
-        <p className="text-lg leading-relaxed text-gray-200">
-          Et inventore unde in quidem excepturi aut galisum eius. Est totam
-          dignissimos et aliquam tempore aut sequi reiciendis et praesentium
-          fuga non dicta voluptatem vel sunt possimus. Aut asperiores asperiores
-          qui odit illum At consequatur consequatur eos officia eaque.
-        </p>
-      </div>
+        {/* Countdown Timer */}
+        <div className="w-full bg-[#0a0a0a] py-4 md:py-6">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="flex flex-row justify-between sm:grid sm:grid-cols-4 gap-2 md:gap-8 text-center">
+              <div className="flex flex-col items-center">
+                <span
+                  className={`text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-purple-400 ${inclusiveSans.className}`}
+                >
+                  {timeLeft.days}
+                </span>
+                <span className="text-xs sm:text-sm md:text-base text-gray-400 mt-1 sm:mt-2">
+                  Days
+                </span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span
+                  className={`text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-red-400 to-pink-300 bg-clip-text text-transparent ${inclusiveSans.className}`}
+                >
+                  {timeLeft.hours.toString().padStart(2, "0")}
+                </span>
+                <span className="text-xs sm:text-sm md:text-base text-gray-400 mt-1 sm:mt-2">
+                  Hours
+                </span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span
+                  className={`text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-pink-400 to-orange-300 bg-clip-text text-transparent ${inclusiveSans.className}`}
+                >
+                  {timeLeft.minutes.toString().padStart(2, "0")}
+                </span>
+                <span className="text-xs sm:text-sm md:text-base text-gray-400 mt-1 sm:mt-2">
+                  Minutes
+                </span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span
+                  className={`text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent ${inclusiveSans.className}`}
+                >
+                  {timeLeft.seconds.toString().padStart(2, "0")}
+                </span>
+                <span className="text-xs sm:text-sm md:text-base text-gray-400 mt-1 sm:mt-2">
+                  Seconds
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Section - Adjusted spacing */}
+      <section className="w-full bg-[#0a0a0a] pt-6 md:pt-8">
+        <div className="max-w-4xl mx-auto px-4 space-y-6 md:space-y-8">
+          <h2
+            className={`text-4xl sm:text-5xl md:text-6xl ${gloock.className} tracking-[-0.64px]`}
+          >
+            About{" "}
+            <span
+              className={`font-black ${montserrat.className} tracking-[-4.48px]`}
+              style={{
+                textShadow: "0px 4px 25.3px #cacaca66",
+                background:
+                  "linear-gradient(180deg, rgb(255, 184.88, 239.81) 0%, rgb(99.42, 52.33, 209.31) 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              Oneiros
+            </span>
+          </h2>
+
+          <div className="space-y-6">
+            <p className="text-lg leading-relaxed text-gray-200">
+              Lorem ipsum dolor sit amet. Sit libero dolores qui tenetur placeat
+              ad voluptates explicabo et expedita praesentium ab voluptatem
+              amet! Vel quisquam laboriosam ex consequatur veniam sit omnis
+              adipisci est iste repellat aut nesciunt fuga et amet pariatur in
+              quia modi.
+            </p>
+
+            <p className="text-lg leading-relaxed text-gray-200">
+              At deserunt ipsa est eligendi modi et tempora reprehenderit 33
+              neque quod. Ut perferendis sint et natus provident ut nostrum esse
+              et nobis natus.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

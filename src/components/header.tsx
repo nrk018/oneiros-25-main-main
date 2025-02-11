@@ -19,28 +19,22 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm w-full">
       <nav className="w-full px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <span className="text-xl sm:text-2xl md:text-3xl font-bold">
-                <span className="text-white font: NeonFont">Oneiros</span>{" "}
-                <span className="text-[#c3c4fa] font: NeonFont">2025</span>
+              <span className="text-white font-[NeonFont]">Oneiros</span>{" "}
+              <span className="text-[#c3c4fa] font-[NeonFont]">2025</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
+          <div className="hidden md:flex items-center gap-8 lg:gap-12">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative group ${
-                  pathname === link.href ? "text-white" : "text-white"
-                }`}
-              >
-                <span className="relative text-base lg:text-lg transition-colors duration-200 hover:text-white">
+              <Link key={link.href} href={link.href} className="relative group">
+                <span className="relative text-base lg:text-lg text-white transition-colors duration-200 hover:text-purple-300 whitespace-nowrap">
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-white to-[#a855f7] group-hover:w-full transition-all duration-300" />
                 </span>
@@ -50,9 +44,10 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden text-white hover:text-[#a855f7] transition-colors p-2"
+            className="md:hidden text-white hover:text-[#a855f7] transition-colors p-2 -mr-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.95 }}
+            aria-label="Toggle menu"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
@@ -76,7 +71,8 @@ const Header = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute top-16 md:top-20 left-0 w-full bg-black border-t border-gray-800 md:hidden overflow-hidden"
+              className="fixed top-16 md:top-20 left-0 right-0 w-full bg-black/95 backdrop-blur-md border-t border-gray-800/50 md:hidden"
+              style={{ maxHeight: "calc(100vh - 4rem)" }}
             >
               <motion.div
                 initial="closed"
@@ -90,7 +86,7 @@ const Header = () => {
                     transition: { staggerChildren: 0.05, staggerDirection: -1 },
                   },
                 }}
-                className="flex flex-col items-center py-6 space-y-6"
+                className="flex flex-col items-center py-6 space-y-6 overflow-y-auto max-h-[calc(100vh-4rem)]"
               >
                 {navLinks.map((link) => (
                   <motion.div
@@ -100,13 +96,14 @@ const Header = () => {
                       closed: { opacity: 0, y: -20 },
                     }}
                     transition={{ duration: 0.2 }}
+                    className="w-full px-4"
                   >
                     <Link
                       href={link.href}
-                      className={`text-lg ${
+                      className={`block w-full text-center py-2 text-lg ${
                         pathname === link.href
-                          ? "text-white"
-                          : "text-white hover:text-white"
+                          ? "text-purple-400"
+                          : "text-white hover:text-purple-300"
                       } transition-colors`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >

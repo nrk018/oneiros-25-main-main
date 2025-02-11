@@ -1,0 +1,21 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap");
+
+.font-gloock {
+  font-family: "Gloock", serif;
+}
+
+.font-instrument-sans {
+  font-family: "Instrument Sans", sans-serif;
+}
+
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.font-inclusive-sans {
+  font-family: "Inclusive Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Replace <weight> with actual weight value */
+  font-style: normal;
+}

@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
         hostname: "jaipur.manipal.edu",
         pathname: "/img/dsw/event/**", 
       },
+      {
+        protocol: "https",
+        hostname: "assets.aceternity.com",
+      },
     ],
   },
 };

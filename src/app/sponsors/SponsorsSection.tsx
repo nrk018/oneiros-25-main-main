@@ -1,7 +1,6 @@
 "use client";
 
-import type React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 
@@ -13,49 +12,19 @@ type Sponsor = {
 type Benefit = string;
 
 const sponsors: Sponsor[] = [
-  {
-    name: "Sponsor 1",
-    logo: "https://jaipurliteraturefestival.org/assets/slider_6-CvbCL7uu.png",
-  },
-  {
-    name: "Sponsor 2",
-    logo: "https://jaipurliteraturefestival.org/assets/slider_7-Cmrvxc47.png",
-  },
-  {
-    name: "Sponsor 3",
-    logo: "https://jaipurliteraturefestival.org/assets/slider_1-DFbE4BHu.png",
-  },
-  {
-    name: "Sponsor 4",
-    logo: "https://jaipurliteraturefestival.org/assets/slider_3-BCDHgckF.png",
-  },
-  {
-    name: "Sponsor 5",
-    logo: "https://jaipurliteraturefestival.org/assets/slider_4-B_OoL44r.png",
-  },
-  {
-    name: "Sponsor 6",
-    logo: "https://jaipurliteraturefestival.org/assets/slider_5-BehQ8764.png",
-  },
+  { name: "Sponsor 1", logo: "https://jaipurliteraturefestival.org/assets/slider_6-CvbCL7uu.png" },
+  { name: "Sponsor 2", logo: "https://jaipurliteraturefestival.org/assets/slider_7-Cmrvxc47.png" },
+  { name: "Sponsor 3", logo: "https://jaipurliteraturefestival.org/assets/slider_1-DFbE4BHu.png" },
+  { name: "Sponsor 4", logo: "https://jaipurliteraturefestival.org/assets/slider_3-BCDHgckF.png" },
+  { name: "Sponsor 5", logo: "https://jaipurliteraturefestival.org/assets/slider_4-B_OoL44r.png" },
+  { name: "Sponsor 6", logo: "https://jaipurliteraturefestival.org/assets/slider_5-BehQ8764.png" },
 ];
 
 const minorSponsors: Sponsor[] = [
-  {
-    name: "Minor Sponsor 1",
-    logo: "https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg",
-  },
-  {
-    name: "Minor Sponsor 2",
-    logo: "https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg",
-  },
-  {
-    name: "Minor Sponsor 3",
-    logo: "https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg",
-  },
-  {
-    name: "Minor Sponsor 4",
-    logo: "https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg",
-  },
+  { name: "Minor Sponsor 1", logo: "https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" },
+  { name: "Minor Sponsor 2", logo: "https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" },
+  { name: "Minor Sponsor 3", logo: "https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" },
+  { name: "Minor Sponsor 4", logo: "https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" },
 ];
 
 const benefits: Benefit[] = [
@@ -67,8 +36,7 @@ const benefits: Benefit[] = [
 ];
 
 const radius = 120;
-const centerImage =
-  "https://jaipurliteraturefestival.org/assets/peacock_1-B9VwMuFl.png";
+const centerImage = "https://jaipurliteraturefestival.org/assets/peacock_1-B9VwMuFl.png";
 
 interface ShinyTextProps {
   text: string;
@@ -77,17 +45,12 @@ interface ShinyTextProps {
   className?: string;
 }
 
-const ShinyText: React.FC<ShinyTextProps> = ({
-  text,
-  disabled = false,
-  speed = 3,
-  className = "",
-}) => {
+const ShinyText: React.FC<ShinyTextProps> = ({ text, disabled = false, speed = 3, className = "" }) => {
   const animationDuration = `${speed}s`;
 
   return (
     <div
-      className={`shiny-text ${disabled ? "disabled" : ""} ${className}`}
+      className={`shiny-text ${disabled ? 'disabled' : ''} ${className}`}
       style={{ animationDuration }}
     >
       {text}
@@ -110,7 +73,7 @@ const SponsorsSection: React.FC = () => {
       lenis.destroy();
     };
   }, []);
-
+  
   const [rotation, setRotation] = useState(0);
   const [benefitIndex, setBenefitIndex] = useState(0);
 
@@ -131,13 +94,12 @@ const SponsorsSection: React.FC = () => {
   }, []);
 
   return (
-    <section
-      className="flex flex-col items-center justify-center text-white text-center p-4 overflow-hidden pt-24 md:pt-28"
-      style={{ background: "transparent" }}
-    >
+    <section className="flex flex-col items-center justify-center text-white text-center p-4 overflow-hidden" 
+             style={{ background: 'transparent' }}>
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-        <span className="font-gloock">Our</span> <br className="sm:hidden" />
-        <span className="gradient-text shiny-text font-montserrat pb-[2px]">
+              <span className="font-gloock font-thin">Our</span>{" "}
+        <br className="sm:hidden" />
+        <span className="gradient-text shiny-text font-montserrat font-black pb-[2px]">
           very cool
         </span>{" "}
         <br className="sm:hidden" />
@@ -145,9 +107,9 @@ const SponsorsSection: React.FC = () => {
       </h1>
 
       <div className="relative w-[380px] h-[380px] flex items-center justify-center mt-16">
-        <div className="absolute w-[150px] h-[150px] flex items-center justify-center z-20 group">
+      <div className="absolute w-[150px] h-[150px] flex items-center justify-center z-20 group">
           <img
-            src={centerImage || "/placeholder.svg"}
+            src={centerImage}
             alt="Center Logo"
             className="w-full h-full object-contain"
           />
@@ -157,7 +119,7 @@ const SponsorsSection: React.FC = () => {
         </div>
 
         {sponsors.map((sponsor, index) => {
-          const angle = (index * 60 + rotation + 30) % 360;
+          const angle = ((index * 60) + rotation + 30) % 360;
           const x = Math.cos((angle * Math.PI) / 180) * radius;
           const y = Math.sin((angle * Math.PI) / 180) * radius;
           const isTop = (angle + 90) % 360 === 0;
@@ -176,7 +138,7 @@ const SponsorsSection: React.FC = () => {
               transition={{ duration: 0.5 }}
             >
               <img
-                src={sponsor.logo || "/placeholder.svg"}
+                src={sponsor.logo}
                 alt={sponsor.name}
                 className="w-[150px] h-[150px] object-contain"
               />
@@ -186,15 +148,16 @@ const SponsorsSection: React.FC = () => {
             </motion.div>
           );
         })}
+
       </div>
 
       <div className="mt-10 text-lg sm:text-xl md:text-2xl font-medium flex flex-col items-center">
-        <span className="text-2xl sm:text-3xl md:text-4xl font-semibold font-gloock">
-          The{" "}
-          <span className="gradient-text shiny-text font-montserrat">
+      <span className="text-2xl sm:text-3xl md:text-4xl font-thin font-gloock">
+          The{' '}
+          <span className="gradient-text shiny-text font-montserrat font-black">
             Oneiros
-          </span>{" "}
-          Advantage
+          </span>{' '}
+          <span className="font-thin">Advantage</span>
         </span>
         <div className="relative mt-2 w-full flex justify-center">
           <AnimatePresence mode="wait">
@@ -214,7 +177,7 @@ const SponsorsSection: React.FC = () => {
       </div>
 
       <div className="mt-16 w-full px-4 py-8">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8 font-gloock">
+        <h2 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-8 font-instrument-sans">
           Our Minor Sponsors
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-center">
@@ -228,11 +191,11 @@ const SponsorsSection: React.FC = () => {
             >
               <div className="relative w-full h-full flex flex-col items-center gap-2">
                 <img
-                  src={sponsor.logo || "/placeholder.svg"}
+                  src={sponsor.logo}
                   alt={sponsor.name}
                   className="w-[90px] h-[90px] object-contain"
                 />
-                <span className="text-sm font-gloock text-white/80 mt-2 text-center">
+                <span className="text-sm font-instrument-sans text-white/80 mt-2 text-center">
                   {sponsor.name}
                 </span>
               </div>
@@ -241,26 +204,20 @@ const SponsorsSection: React.FC = () => {
         </div>
       </div>
 
-      <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap");
-
-        .font-gloock {
-          font-family: "Gloock", serif;
-        }
-        .font-instrument-sans {
-          font-family: "Instrument Sans", sans-serif;
-        }
-        .font-montserrat {
-          font-family: "Montserrat", sans-serif;
-        }
+      <style global jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        
+        .font-gloock { font-family: 'Gloock', serif; }
+        .font-instrument-sans { font-family: 'Instrument Sans', sans-serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
         .shiny-text {
           color: #ffffff;
           background: linear-gradient(
             120deg,
-            rgba(255, 255, 255, 0) 30%,
-            rgba(255, 255, 255, 0.9) 50%,
-            rgba(255, 255, 255, 0) 70%
+            rgba(255, 255, 255, 0) 30%,  
+            rgba(255, 255, 255, 0.9) 50%, 
+            rgba(255, 255, 255, 0) 70%   
           );
           background-size: 200% 100%;
           -webkit-background-clip: text;
@@ -271,16 +228,12 @@ const SponsorsSection: React.FC = () => {
         }
 
         @keyframes shine {
-          0% {
-            background-position: 100%;
-          }
-          100% {
-            background-position: -100%;
-          }
+          0% { background-position: 100%; }
+          100% { background-position: -100%; }
         }
 
         .gradient-text {
-          background: linear-gradient(90deg, #9400d3, #ff1493, #00ffff);
+          background: linear-gradient(90deg, #9400D3, #FF1493, #00FFFF);
           background-size: 300% 100%;
           -webkit-background-clip: text;
           background-clip: text;
@@ -289,15 +242,9 @@ const SponsorsSection: React.FC = () => {
         }
 
         @keyframes gradientAnimation {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
       `}</style>
     </section>

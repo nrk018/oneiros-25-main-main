@@ -70,7 +70,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/ProBros.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/12.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -93,7 +93,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/ProBros.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/12.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -105,7 +105,7 @@ export default function PrevOnoSection() {
             </div>
             <div className="prev-ono-major-text-2 prev-ono-major-text">Destival: Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
             <div className="prev-ono-major-img-2">
-              <Image height={0} width={0} sizes="100%" src="/LandingPageImgs/ProBros.jpg" alt="Previous Oneiros Logo" style={{ height: "100%", width: "100%", objectFit: "cover" }} />
+              <Image height={0} width={0} sizes="100%" src="https://jaipur.manipal.edu/img/dsw/event/11.jpeg" alt="Previous Oneiros Logo" style={{ height: "100%", width: "100%", objectFit: "cover" }} />
             </div>
             <div className="prev-ono-major-text-3 prev-ono-major-text">Cosmos: Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum.</div>
             <div className="prev-ono-major-img-3">
@@ -114,7 +114,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/ProBros.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/10.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -131,7 +131,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/ProBros.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/8.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -152,7 +152,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/ProBros.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/8.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -166,7 +166,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/ProBros.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/7.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -180,7 +180,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/ProBros.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/15.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -194,7 +194,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="/LandingPageImgs/ProBros.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/42.jpg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",

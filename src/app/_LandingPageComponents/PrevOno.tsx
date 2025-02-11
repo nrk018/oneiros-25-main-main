@@ -93,7 +93,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="https://jaipur.manipal.edu/img/dsw/event/12.jpeg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/15.jpeg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -152,7 +152,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="https://jaipur.manipal.edu/img/dsw/event/8.jpeg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/31.jpg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -166,7 +166,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="https://jaipur.manipal.edu/img/dsw/event/7.jpeg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/16.jpg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -180,7 +180,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="https://jaipur.manipal.edu/img/dsw/event/15.jpeg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/38.jpg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",
@@ -194,7 +194,7 @@ export default function PrevOnoSection() {
                   height={0}
                   width={0}
                   sizes="100%"
-                  src="https://jaipur.manipal.edu/img/dsw/event/42.jpg"
+                  src="https://jaipur.manipal.edu/img/dsw/event/37.jpg"
                   alt="Previous Oneiros Logo"
                   style={{
                     height: "100%",

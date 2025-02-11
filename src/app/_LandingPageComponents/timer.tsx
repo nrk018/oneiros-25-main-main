@@ -82,7 +82,7 @@ export default function Timer() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/video-background.webm" type="video/webm" />
+          <source src="/tree.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

@@ -700,24 +700,20 @@ function MemberCard({ member }: { member: TeamMember }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group relative bg-gray-800/50 backdrop-blur-sm overflow-hidden rounded-xl shadow-lg border-2 border-transparent hover:border-indigo-500 transition-all duration-300"
+      className="group relative bg-gray-800/50 backdrop-blur-sm overflow-hidden rounded-xl shadow-lg border-2 border-transparent hover:border-indigo-500 transition-all duration-300 w-64 margin-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Card Border */}
-      <div className="absolute inset-0 rounded-xl border-0 border-gradient-to-r from-white-100 to-indio-500 pointer-events-none"></div>
-
-      <div className="relative w-full h-72 overflow-hidden rounded-t-xl">
-        {/* Image */}
+      <div className="relative overflow-hidden rounded-xl">
         <Image
           src={member.image}
           alt={`Profile picture of ${member.name}`}
-          layout="fill"
-          objectFit="cover"
-          className="transition-all duration-500 rounded-t-xl"
+          width={512}
+          height={512}
+          className="object-cover w-full rounded-xl aspect-[3/4]"
         />
         <motion.div
-          className="absolute inset-0 bg-black pointer-events-none rounded-t-xl"
+          className="absolute inset-0 bg-black pointer-events-none rounded-xl"
           initial={{ opacity: 0.7 }}
           animate={{ opacity: isHovered ? 0.3 : 0.7 }}
           transition={{ duration: 0.3 }}
@@ -733,23 +729,12 @@ function MemberCard({ member }: { member: TeamMember }) {
         }}
         transition={{ duration: 0.3 }}
       >
-        <h2 className="text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors relative z-10 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,1)]">
+        <h2 className="text-xl font-semibold text-white mb-2 group-hover:text-white transition-colors relative z-10">
           {member.name}
         </h2>
-        <p className="text-sm text-gray-300 font-light transition-colors group-hover:text-white group-hover:drop-shadow-[0_0_5px_rgba(255,255,255,1)]">
+        <p className="text-sm text-gray-300 font-light transition-colors group-hover:text-white">
           {member.position}
         </p>
-      </motion.div>
-
-      {/* Glow Effect */}
-      <motion.div
-        className="absolute inset-0 rounded-xl pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="absolute inset-0 rounded-xl border-2 border-gradient-to-r from-white-500 to-indigo-500 animate-pulse"></div>
-        <div className="absolute inset-0 rounded-xl border-2 border-gradient-to-r from-white-500 to-indigo-500 blur-md"></div>
       </motion.div>
     </motion.div>
   );
@@ -830,6 +815,7 @@ export default function TeamsPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
+             
             >
               <div className="relative w-full h-48 lg:h-[297px] mb-6">
                 <Image
@@ -837,10 +823,11 @@ export default function TeamsPage() {
                   alt="Group Photo"
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-lg"
+                  className="rounded-lg aspect-[4/3] "
+                   
                 />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 margin-auto">
                 {conveners.members.map((convener) => (
                   <MemberCard key={convener.id} member={convener} />
                 ))}
@@ -854,7 +841,7 @@ export default function TeamsPage() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols- gap-5 margin-auto">
                 {managingDirector.members.map((director) => (
                   <MemberCard key={director.id} member={director} />
                 ))}
@@ -869,48 +856,48 @@ export default function TeamsPage() {
               transition={{ duration: 0.3 }}
             >
               <section className="mb-6">
-                <h2 className={`text-2xl font-bold mb-4 ${gradientTextClass}`}>
-                  Executive Committee
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                  {selection.data.execMembers.map((member) => (
-                    <MemberCard key={member.id} member={member} />
-                  ))}
-                </div>
+              <h2 className={`text-2xl font-bold mb-4 ${gradientTextClass}`}>
+                Executive Committee
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                {selection.data.execMembers.map((member) => (
+                <MemberCard key={member.id} member={member} />
+                ))}
+              </div>
               </section>
               {selection.type === "committee" && (
-  <section>
-    <h2 className={`text-2xl font-bold mb-4 ${gradientTextClass}`}>
-      Core Committee
-    </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      {selection.data.coreMembers.map((member) => (
-        <div
-          key={member.id}
-          className="group relative bg-gray-800/50 backdrop-blur-sm overflow-hidden rounded-xl shadow-lg border-2 border-transparent p-4"
-        >
-          {selection.data.id === 3 && (
+        <section>
+        <h2 className={`text-2xl font-bold mb-4 ${gradientTextClass}`}>
+          Core Committee
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+          {selection.data.coreMembers.map((member) => (
+          <div
+            key={member.id}
+            className="group relative bg-gray-800/50 backdrop-blur-sm overflow-hidden rounded-xl shadow-lg border-2 border-transparent p-4"
+          >
+            {selection.data.id === 3 && (
             <div className="relative w-full h-36 overflow-hidden rounded-t-xl">
               <Image
-                src={member.image}
-                alt={`Profile picture of ${member.name}`}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-t-xl"
+              src={member.image}
+              alt={`Profile picture of ${member.name}`}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-t-xl "
               />
             </div>
-          )}
+            )}
 
-          {/* Name & Position (Always Visible) */}
-          <div className="text-center p-2">
+            {/* Name & Position (Always Visible) */}
+            <div className="text-center p-2">
             <h2 className="text-lg font-semibold text-white">{member.name}</h2>
             <p className="text-sm text-gray-400">{member.position}</p>
+            </div>
           </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </section>
-)}
+        </section>
+      )}
             </motion.div>
           )}
         </AnimatePresence>

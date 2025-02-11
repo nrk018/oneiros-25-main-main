@@ -692,19 +692,18 @@ const MobileMenu = ({
     </AnimatePresence>
   );
 };
-
 function MemberCard({ member }: { member: TeamMember }) {
   const [isHovered, setIsHovered] = useState(false);
-
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="group relative bg-gray-800/50 backdrop-blur-sm overflow-hidden rounded-xl shadow-lg border-2 border-transparent hover:border-indigo-500 transition-all duration-300 w-64 margin-auto"
+      className="group relative bg-gray-800/50 backdrop-blur-sm overflow-hidden rounded-xl shadow-lg border-2 border-transparent hover:border-indigo-500 transition-all duration-300 w-64 mx-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative overflow-hidden rounded-xl">
+      <div className="relative overflow-hidden rounded-xl flex justify-center items-center">
         <Image
           src={member.image}
           alt={`Profile picture of ${member.name}`}
@@ -719,10 +718,8 @@ function MemberCard({ member }: { member: TeamMember }) {
           transition={{ duration: 0.3 }}
         />
       </div>
-
-      {/* Card Content */}
       <motion.div
-        className="absolute bottom-0 p-6 text-center w-full"
+        className="absolute bottom-0 left-0 right-0 p-6 text-center"
         animate={{
           y: isHovered ? -5 : 0,
           scale: isHovered ? 1.05 : 1
@@ -739,13 +736,11 @@ function MemberCard({ member }: { member: TeamMember }) {
     </motion.div>
   );
 }
-
 export default function TeamsPage() {
   const [selection, setSelection] = useState<Selection>({ type: "conveners" });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const gradientTextClass = "bg-gradient-to-r from-purple-100 via-indigo-500 to-purple-500 text-transparent bg-clip-text animate-gradient [text-shadow:0_0_5px_rgba(255,0,128,0.3),0_0_10px_rgba(255,0,128,0.2),0_0_15px_rgba(255,0,128,0.1)]";
-
-
 
   const handleSelection = (newSelection: Selection) => {
     setSelection(newSelection);
@@ -753,7 +748,7 @@ export default function TeamsPage() {
   };
 
   const getHeaderText = () => {
-    if (selection.type === "conveners" || selection.type === "managingDirectors") {
+    if (selection.type === "conveners") {
       return "OUR TEAMS";
     }
     return selection.data.name;
@@ -765,11 +760,6 @@ export default function TeamsPage() {
         label="Conveners"
         active={selection.type === "conveners"}
         onSelect={() => handleSelection({ type: "conveners" })}
-      />
-      <SidebarItem
-        label="Managing Directors"
-        active={selection.type === "managingDirectors"}
-        onSelect={() => handleSelection({ type: "managingDirectors" })}
       />
       {committees.map((committee) => (
         <SidebarItem
@@ -784,7 +774,6 @@ export default function TeamsPage() {
 
   return (
     <div className="relative min-h-screen bg-black text-white">
-      {/* Page Header (below main navbar) */}
       <div className="sticky top-14 z-30 bg-black border-b border-gray-800">
         <div className="flex items-center justify-between p-4">
           <button
@@ -800,12 +789,10 @@ export default function TeamsPage() {
         </div>
       </div>
 
-      {/* Universal Sidebar Menu */}
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
         <NavigationItems />
       </MobileMenu>
 
-      {/* Main Content */}
       <div className="p-4 lg:p-6">
         <AnimatePresence mode="wait">
           {selection.type === "conveners" ? (
@@ -815,37 +802,40 @@ export default function TeamsPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-             
             >
-              <div className="relative w-full h-48 lg:h-[297px] mb-6">
+              <div className="relative w-full h-48 lg:h-[297px] mb-6 flex justify-center">
                 <Image
                   src={conveners.groupImage}
                   alt="Group Photo"
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-lg aspect-[4/3] "
-                   
+                  className="rounded-lg aspect-[4/3]"
                 />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 margin-auto">
-                {conveners.members.map((convener) => (
-                  <MemberCard key={convener.id} member={convener} />
-                ))}
-              </div>
-            </motion.div>
-          ) : selection.type === "managingDirectors" ? (
-            <motion.div
-              key="managingDirectors"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols- gap-5 margin-auto">
-                {managingDirector.members.map((director) => (
-                  <MemberCard key={director.id} member={director} />
-                ))}
-              </div>
+              
+              {/* Conveners Section */}
+              <section className="mb-12">
+                <h2 className={`text-2xl font-bold mb-6 ${gradientTextClass}`}>
+                  Conveners
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 place-items-center">
+                  {conveners.members.map((convener) => (
+                    <MemberCard key={convener.id} member={convener} />
+                  ))}
+                </div>
+              </section>
+
+              {/* Managing Directors Section */}
+              <section className="mb-6">
+                <h2 className={`text-2xl font-bold mb-6 ${gradientTextClass}`}>
+                  Managing Directors
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 place-items-center">
+                  {managingDirector.members.map((director) => (
+                    <MemberCard key={director.id} member={director} />
+                  ))}
+                </div>
+              </section>
             </motion.div>
           ) : (
             <motion.div
@@ -856,48 +846,46 @@ export default function TeamsPage() {
               transition={{ duration: 0.3 }}
             >
               <section className="mb-6">
-              <h2 className={`text-2xl font-bold mb-4 ${gradientTextClass}`}>
-                Executive Committee
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-                {selection.data.execMembers.map((member) => (
-                <MemberCard key={member.id} member={member} />
-                ))}
-              </div>
+                <h2 className={`text-2xl font-bold mb-4 ${gradientTextClass}`}>
+                  Executive Committee
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 place-items-center">
+                  {selection.data.execMembers.map((member) => (
+                    <MemberCard key={member.id} member={member} />
+                  ))}
+                </div>
               </section>
               {selection.type === "committee" && (
-        <section>
-        <h2 className={`text-2xl font-bold mb-4 ${gradientTextClass}`}>
-          Core Committee
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-          {selection.data.coreMembers.map((member) => (
-          <div
-            key={member.id}
-            className="group relative bg-gray-800/50 backdrop-blur-sm overflow-hidden rounded-xl shadow-lg border-2 border-transparent p-4"
-          >
-            {selection.data.id === 3 && (
-            <div className="relative w-full h-36 overflow-hidden rounded-t-xl">
-              <Image
-              src={member.image}
-              alt={`Profile picture of ${member.name}`}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-t-xl "
-              />
-            </div>
-            )}
-
-            {/* Name & Position (Always Visible) */}
-            <div className="text-center p-2">
-            <h2 className="text-lg font-semibold text-white">{member.name}</h2>
-            <p className="text-sm text-gray-400">{member.position}</p>
-            </div>
-          </div>
-          ))}
-        </div>
-        </section>
-      )}
+                <section>
+                  <h2 className={`text-2xl font-bold mb-4 ${gradientTextClass}`}>
+                    Core Committee
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5 place-items-center">
+                    {selection.data.coreMembers.map((member) => (
+                      <div
+                        key={member.id}
+                        className="group relative bg-gray-800/50 backdrop-blur-sm overflow-hidden rounded-xl shadow-lg border-2 border-transparent p-4 w-64 mx-auto"
+                      >
+                        {selection.data.id === 3 && (
+                          <div className="relative w-full h-36 overflow-hidden rounded-t-xl flex justify-center items-center">
+                            <Image
+                              src={member.image}
+                              alt={`Profile picture of ${member.name}`}
+                              layout="fill"
+                              objectFit="cover"
+                              className="rounded-t-xl"
+                            />
+                          </div>
+                        )}
+                        <div className="text-center p-2">
+                          <h2 className="text-lg font-semibold text-white">{member.name}</h2>
+                          <p className="text-sm text-gray-400">{member.position}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
             </motion.div>
           )}
         </AnimatePresence>

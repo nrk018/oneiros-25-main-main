@@ -72,9 +72,9 @@ const config: Config = {
   			'neon-red': '#FF0000',
   			'light-blue': '#ABCDEF'
   		},
-		backgroundImage: {
-			'forest-pattern': 'url("path/to/forest-pattern.png")',
-		},
+  		backgroundImage: {
+  			'forest-pattern': 'url("path/to/forest-pattern.png")'
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -89,9 +89,10 @@ const config: Config = {
   				'Space Mono',
   				'monospace'
   			],
-			  'neon': 
-			  ['NeonFont', 
-			 'sans-serif'],
+  			neon: [
+  				'NeonFont',
+  				'sans-serif'
+  			]
   		},
   		keyframes: {
   			'accordion-down': {

@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
 
         const sheetDetails = sheetConfig[selectedEvent]
         if (!sheetDetails) {
-          return NextResponse.json({error: 'An Error Occured while Parsing Data'},{status: 500})
+          return NextResponse.json({error: 'An Error Occurred while Parsing Data'},{status: 500})
         }
         
         const auth = new google.auth.GoogleAuth({

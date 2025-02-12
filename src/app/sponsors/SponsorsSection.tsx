@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
+import Image from "next/image"; 
 
 type Sponsor = {
   name: string;
@@ -107,11 +108,14 @@ const SponsorsSection: React.FC = () => {
       </h1>
 
       <div className="relative w-[380px] h-[380px] flex items-center justify-center mt-16">
-      <div className="absolute w-[150px] h-[150px] flex items-center justify-center z-20 group">
-          <img
+        <div className="absolute w-[150px] h-[150px] flex items-center justify-center z-20 group">
+          {/* Use Next.js Image component */}
+          <Image
             src={centerImage}
             alt="Center Logo"
             className="w-full h-full object-contain"
+            width={150} // Specify width
+            height={150} // Specify height
           />
           <div className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 text-lg font-semibold transition-opacity">
             {`Center Sponsor`}
@@ -137,10 +141,13 @@ const SponsorsSection: React.FC = () => {
               }}
               transition={{ duration: 0.5 }}
             >
-              <img
+              {/* Use Next.js Image component */}
+              <Image
                 src={sponsor.logo}
                 alt={sponsor.name}
                 className="w-[150px] h-[150px] object-contain"
+                width={150} // Specify width
+                height={150} // Specify height
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 text-lg font-semibold transition-opacity">
                 <ShinyText text={sponsor.name} />
@@ -148,7 +155,6 @@ const SponsorsSection: React.FC = () => {
             </motion.div>
           );
         })}
-
       </div>
 
       <div className="mt-10 text-lg sm:text-xl md:text-2xl font-medium flex flex-col items-center">
@@ -190,10 +196,13 @@ const SponsorsSection: React.FC = () => {
                         hover:bg-white/10 transition-colors duration-300"
             >
               <div className="relative w-full h-full flex flex-col items-center gap-2">
-                <img
+                {/* Use Next.js Image component */}
+                <Image
                   src={sponsor.logo}
                   alt={sponsor.name}
                   className="w-[90px] h-[90px] object-contain"
+                  width={90} // Specify width
+                  height={90} // Specify height
                 />
                 <span className="text-sm font-instrument-sans text-white/80 mt-2 text-center">
                   {sponsor.name}

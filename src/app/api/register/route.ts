@@ -1,4 +1,3 @@
-import { error } from 'console';
 import { google } from 'googleapis';
 import { NextRequest, NextResponse } from 'next/server';
 

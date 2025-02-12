@@ -11,15 +11,16 @@ import { StepIndicator } from "@/components/stepindicator"
 import axios from 'axios';
 import Image from "next/image"
 
-
+/*
 import {
   Gloock,
   Instrument_Sans,
   Montserrat,
   Inclusive_Sans,
 } from "next/font/google";
-
+*/
 // Configure fonts
+/*
 const gloock = Gloock({
   subsets: ["latin"],
   weight: "400",
@@ -43,7 +44,7 @@ const inclusiveSans = Inclusive_Sans({
   weight: "400",
   variable: "--font-inclusive-sans",
 });
-
+*/
 
 const steps = ["Team Information", "Event Selection", "Submission"]
 const events = [

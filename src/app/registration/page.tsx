@@ -56,7 +56,7 @@ const events = [
   {
     name: "Requiem",
     description:
-      "Requiem is a thrilling competition that tests participants' strategic thinking and teamwork abilities.",
+      "Requiem is a thrilling competition that tests participants&#39; strategic thinking and teamwork abilities.",
   },
   {
     name: "Cosmos",

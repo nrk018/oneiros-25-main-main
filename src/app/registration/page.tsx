@@ -51,12 +51,12 @@ const events = [
   {
     name: "Destival",
     description:
-      "The stage is set, the beats are dropping, and the best dancers are here to own it. Destival brings top talent from everywhere to battle it out, delivering high energy performances that set the floor on fire. Get ready for a dance showdown like never before.",
+      "The stage is set, the beats are dropping, and the best dancers are here to own it. Destival brings top talent from everywhere to battle it out, delivering high energy performances that set the floor on fire. Get ready for a dance showdown like never before!",
   },
   {
     name: "Requiem",
     description:
-      "Requiem is a thrilling competition that tests participants strategic thinking and teamwork abilities."
+      "Requiem is a thrilling competition that tests participant&#39;s strategic thinking and teamwork abilities."
   },
   {
     name: "Cosmos",
@@ -176,7 +176,7 @@ export default function MajortRegistrationForm() {
                     required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="teamLeaderIdCard">Team Leader's College ID Card (Drive Link) *</Label>
+                  <Label htmlFor="teamLeaderIdCard">Team Leader&#39;s College ID Card (Drive Link) *</Label>
                   <Input
                     id="teamLeaderIdCard"
                     name="teamLeaderIdCard"

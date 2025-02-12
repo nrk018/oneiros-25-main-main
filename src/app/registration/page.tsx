@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { StepIndicator } from "@/components/stepindicator"
 import axios from 'axios';
 import Image from "next/image"
-import logo from "../registration/neon-with.png"
+
 
 import {
   Gloock,
@@ -127,7 +127,7 @@ export default function MajortRegistrationForm() {
   return (
     
        <><div className="flex flex-col items-center justify-center mt-[10vh]">
-       <Image src={logo} alt="Logo" width={200} height={100} className="mb-5" />
+       <Image src="/neon-with.png" alt="Logo" width={200} height={100} className="mb-5" />
      </div>
      <Card className="w-full max-w-4xl border-purple-500 mx-auto">
       <CardHeader className="text-center space-y-2">

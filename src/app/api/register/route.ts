@@ -55,6 +55,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({success: 'Successfully Registered' },{status: 200});
       } catch (error) {
         console.error(error);
-        return NextResponse.json({error: 'An Error Occured while Registering' },{status: 500});
+        return NextResponse.json({error: 'An Error Occurred while Registering' },{status: 500});
       }
 }

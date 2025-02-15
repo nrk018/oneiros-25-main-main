@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 import { NextRequest, NextResponse } from 'next/server';
 
 interface SheetDetails {
-  id: string;
+  id: string | undefined;
   range: string;
 }
 
@@ -14,15 +14,15 @@ export async function POST(req: NextRequest) {
 
         const sheetConfig: SheetConfig = {
           Destival: {
-            id: "1y_L8bytr85NNzNz3S19BWhEvOJbJu-J3k5eoJ0pHJAc",
+            id: process.env.Destival ,
             range: "Sheet1!A1:C1",
           },
           Requiem: {
-            id: "1NtGPNUO4thqDT6A4h1JstGXRGFIq2kZbREr2nbx7-mo",
+            id: process.env.Requiem ,
             range: "Sheet1!A1:C1",
           },
           Cosmos: {
-            id: "1zhqoTYUU48ZTyh62HdCaCxIZ-1DnIecZ8c4FXIpp2rI",
+            id: process.env.Cosmos ,
             range: "Sheet1!A1:C1",
           },
         };

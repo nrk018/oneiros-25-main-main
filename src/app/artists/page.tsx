@@ -45,32 +45,6 @@ const previousArtists = [
     spotify: "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we",
     accolades: ["3 Grammy Awards", "6 Brit Awards", "2 Guinness World Records"],
   },
-  {
-    year: 2021,
-    name: "Coldplay",
-    image:
-      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop",
-    description:
-      "Legendary British rock band known for their evolving sound and spectacular live performances.",
-    gradientClass: "bg-gradient-to-br from-yellow-400 to-blue-500",
-    spotify: "https://open.spotify.com/artist/4gzpq5DPGxSnKTe4SA8HAU",
-    accolades: [
-      "7 Grammy Awards",
-      "9 Brit Awards",
-      "100 Million Records Sold Worldwide",
-    ],
-  },
-  {
-    year: 2020,
-    name: "Ed Sheeran",
-    image:
-      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&h=600&fit=crop",
-    description:
-      "Chart-topping singer-songwriter known for his heartfelt lyrics and acoustic-pop sound.",
-    gradientClass: "bg-gradient-to-br from-orange-500 to-red-700",
-    spotify: "https://open.spotify.com/artist/6eUKZXaKkcviH0Ku9w2n3V",
-    accolades: ["4 Grammy Awards", "1 MBE", "6 Brit Awards"],
-  },
 ];
 
 const pageVariants = {

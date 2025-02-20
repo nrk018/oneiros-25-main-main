@@ -1,23 +1,133 @@
-import type React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Music2Icon, Calendar, Award } from "lucide-react";
+"use client";
 
-interface ArtistCardProps {
+import type { Artist, PreviousArtistCardProps } from "../../types/types";
+import { motion } from "framer-motion";
+import { Calendar, Award } from "lucide-react";
+import Image from "next/image";
+import type React from "react";
+import { useInView } from "react-intersection-observer";
+
+const PreviousArtistCard: React.FC<PreviousArtistCardProps> = ({
+  yearData,
+  index,
+}) => {
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+
+  // Handle single artist format (for years like 2018)
+  if (!yearData.artists) {
+    return (
+      <SingleArtistCard
+        artist={{
+          year: yearData.year,
+          name: yearData.name!,
+          image: yearData.image!,
+          description: yearData.description!,
+          gradientClass: yearData.gradientClass || "from-gray-900 to-gray-600",
+          accolades: yearData.accolades,
+        }}
+        index={index}
+      />
+    );
+  }
+
+  // Handle multiple artists format
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: index * 0.2 }}
+      className="relative space-y-8"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ delay: 0.4 }}
+        className="text-center"
+      >
+        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
+          <Calendar className="w-4 h-4 text-gray-300" />
+          <span className="text-sm font-medium text-gray-300">
+            ONEIROS {yearData.year}
+          </span>
+        </div>
+      </motion.div>
+
+      <div
+        className={`grid ${
+          yearData.artists.length === 1
+            ? "grid-cols-1 max-w-4xl"
+            : yearData.artists.length === 2
+            ? "grid-cols-1 md:grid-cols-2 max-w-5xl gap-6 md:gap-8"
+            : "grid-cols-1 md:grid-cols-3 max-w-6xl gap-6 md:gap-8"
+        } mx-auto px-4 place-items-center justify-items-center`}
+      >
+        {yearData.artists.map((artist, artistIndex) => (
+          <ArtistCard
+            key={artist.name}
+            artist={artist}
+            inView={inView}
+            delay={artistIndex * 0.2}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+const ArtistCard: React.FC<{
+  artist: Artist;
+  inView: boolean;
+  delay: number;
+}> = ({ artist, inView, delay }) => {
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay, duration: 0.5 }}
+      className="relative group overflow-hidden rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-md"
+    >
+      <div className="relative aspect-[16/9]">
+        <Image
+          src={artist.image || "/placeholder.svg"}
+          alt={artist.name}
+          fill
+          className="object-cover transition-all duration-700 scale-105 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+      </div>
+
+      <div className="absolute inset-0 p-4 flex flex-col justify-end">
+        <div className="space-y-2">
+          {artist.day && (
+            <span className="inline-block bg-white/10 backdrop-blur-md px-2 py-1 rounded-full text-xs text-gray-300">
+              {artist.day}
+            </span>
+          )}
+          <h4 className="font-bold text-xl text-white">{artist.name}</h4>
+          <p className="text-sm text-gray-300">{artist.description}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const SingleArtistCard: React.FC<{
   artist: {
     year: number;
     name: string;
     image: string;
     description: string;
     gradientClass: string;
-    spotify: string;
     accolades?: string[];
   };
   index: number;
-}
-
-const PreviousArtistCard: React.FC<ArtistCardProps> = ({ artist, index }) => {
+}> = ({ artist, index }) => {
   const [ref, inView] = useInView({
     threshold: 0.2,
     triggerOnce: true,
@@ -29,10 +139,10 @@ const PreviousArtistCard: React.FC<ArtistCardProps> = ({ artist, index }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.2 }}
-      className="relative group overflow-hidden rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 max-w-4xl mx-auto"
+      className="relative group overflow-hidden rounded-3xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 max-w-4xl mx-auto"
     >
       {/* Main Image */}
-      <div className="relative aspect-[16/9] sm:aspect-[2/1] md:aspect-[16/9]">
+      <div className="relative aspect-[16/9]">
         <Image
           src={artist.image || "/placeholder.svg"}
           alt={artist.name}
@@ -103,27 +213,6 @@ const PreviousArtistCard: React.FC<ArtistCardProps> = ({ artist, index }) => {
               ))}
             </motion.ul>
           )}
-
-          {/* Spotify Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.2 }}
-          >
-            <motion.a
-              href={artist.spotify}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-[#1DB954] text-black font-bold 
-                py-1.5 px-3 sm:py-2 sm:px-4 md:py-3 md:px-6 rounded-full text-xs sm:text-sm transition-all duration-300
-                hover:bg-[#1ED760] hover:shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Music2Icon className="w-3 h-3 sm:w-3 sm:h-3 md:w-4 md:h-4 mr-1 sm:mr-2 transition-transform duration-300 group-hover:rotate-12" />
-              Listen on Spotify
-            </motion.a>
-          </motion.div>
         </div>
       </div>
     </motion.div>
